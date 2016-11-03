@@ -13,7 +13,7 @@
 
     angular
         .module('angularHeadingNavigation')
-        .directive('headingNavigation', headingNavigation);
+        .directive('headingNavigation', ['$window', 'angularHeadingNavigation', headingNavigation]);
 
     /* @ngInject */
     function headingNavigation($window, angularHeadingNavigation) {

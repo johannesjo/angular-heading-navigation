@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('angularHeadingNavigation', [])
-        .config(deactivateUrlRewriting);
+        .config(['$locationProvider', deactivateUrlRewriting]);
 
 
     /* @ngInject */
