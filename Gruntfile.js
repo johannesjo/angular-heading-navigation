@@ -313,6 +313,7 @@ module.exports = function(grunt) {
                 src: '*.html',
                 dest: 'src/tpls.js',
                 options: {
+                    prefix: 'templates/',
                     htmlmin: {
                         collapseWhitespace: true,
                         collapseBooleanAttributes: true,
