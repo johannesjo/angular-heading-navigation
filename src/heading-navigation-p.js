@@ -7,7 +7,7 @@ angular.module('angularHeadingNavigation')
         // *****************
 
         var config = {
-            HEADINGS_QUERY_SELECTOR: 'h2[data-example-heading],h3[data-example-heading]',
+            HEADINGS_QUERY_SELECTOR: 'h2[data-heading-navigation-heading],h3[data-heading-navigation-heading]',
             START_LEVEL: 2
         };
 
