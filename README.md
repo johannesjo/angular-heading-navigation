@@ -26,14 +26,11 @@ angular.module('yourApp',[
 Using the component is easy. Just wrap your markup and your good to go:
 
 ```html
-<example>
-  <my-sexy-component ng-init="data=['data', 'you', 'might', 'want']" data="data">
-     <p>Some text with <i>style</i>
-  </my-sexy-component>
-  <some-releated-directive></some-releated-directive>
-  <description>optional</description>
-</example>
-
+<div data-heading-navigation></div>
+<h2 data-heading-navigation-heading>Some Heading</h2>
+<h3 data-heading-navigation-heading>Some sub Heading</h3>
+<h2 data-heading-navigation-heading>Some Heading</h2>
+<h3 data-heading-navigation-heading>Some sub Heading</h3>
 ```
 Your components should work as usual and they get a nice source-view attached. If you want to add a little more Information, you can use the description-tag. Everything inside, won't be shown in the source-view.
 
