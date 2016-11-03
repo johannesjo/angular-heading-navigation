@@ -1,0 +1,50 @@
+{
+  "name": "angular-heading-navigation",
+  "description": "Tool for styleguides and showcasing compenents.",
+  "version": "0.1.0",
+  "authors": [
+    "Johannes Millan <johannes.millan@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johannesjo/angular-heading-navigation.git"
+  },
+  "homepage": "http://johannesjo.github.io/angular-heading-navigation/",
+  "license": "LGPL-2.1",
+  "main": "dist/angular-heading-navigation.js",
+  "keywords": [
+    "angular",
+    "AngularJS",
+    "form",
+    "forms",
+    "form helper",
+    "buttons",
+    "button",
+    "loading-button"
+  ],
+  "ignore": [
+    "gh-pages",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-highlightjs": "^0.6.2",
+    "angular": "^1.5.8",
+    "highlightjs": "^9.7.0",
+    "lodash": "^4.16.6"
+  },
+  "devDependencies": {
+    "angular-animate": "~1.5.8",
+    "angular-mocks": "~1.5.8"
+  },
+  "overrides": {
+    "angular-highlightjs": {
+      "dependencies": {
+        "angular": "~1.5.8",
+        "highlightjs": "~9.7.0"
+      }
+    }
+  }
+}
