@@ -3,7 +3,7 @@
 
     deactivateUrlRewriting.$inject = ["$locationProvider"];
     angular.module('angularHeadingNavigation', [])
-        .config(deactivateUrlRewriting);
+        .config(['$locationProvider', deactivateUrlRewriting]);
 
 
     /* @ngInject */
@@ -44,7 +44,7 @@ angular.module('angularHeadingNavigation').run(['$templateCache', function($temp
     headingNavigation.$inject = ["$window", "angularHeadingNavigation"];
     angular
         .module('angularHeadingNavigation')
-        .directive('headingNavigation', headingNavigation);
+        .directive('headingNavigation', ['$window', 'angularHeadingNavigation', headingNavigation]);
 
     /* @ngInject */
     function headingNavigation($window, angularHeadingNavigation) {
