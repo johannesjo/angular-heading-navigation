@@ -1,4 +1,23 @@
-angular.module('angularHeadingNavigation', []);
+(function() {
+    'use strict';
+
+    deactivateUrlRewriting.$inject = ["$locationProvider"];
+    angular.module('angularHeadingNavigation', [])
+        .config(deactivateUrlRewriting);
+
+
+    /* @ngInject */
+    function deactivateUrlRewriting($locationProvider) {
+        /* we need this kind of hack, as angular is quite intrusive
+         when it comes to rewriting urls. Without this snippet all
+         hash links would get an extra slash added to them */
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false,
+            rewriteLinks: false
+        });
+    }
+})();
 
 angular.module('angularHeadingNavigation').run(['$templateCache', function($templateCache) {
   'use strict';
@@ -90,7 +109,7 @@ angular.module('angularHeadingNavigation').run(['$templateCache', function($temp
 
                 for (var i = 0; i < headerNodes.length; i++) {
                     var currentNode = handleHeadingNode(headerNodes[i], devMode);
-                    if (currentNode.level === cfg.headingNav.START_LEVEL) {
+                    if (currentNode.level === cfg.START_LEVEL) {
                         currentParentNode = currentNode;
                         currentParentNode.sub = [];
                         treeStructure.push(currentParentNode);
@@ -106,9 +125,9 @@ angular.module('angularHeadingNavigation').run(['$templateCache', function($temp
             var targetEl = $window.document.querySelectorAll(scope.headingNavigationTarget);
             var headerNodes;
             if (targetEl && targetEl[0]) {
-                headerNodes = targetEl[0].querySelectorAll(cfg.headingNav.HEADINGS_QUERY_SELECTOR);
+                headerNodes = targetEl[0].querySelectorAll(cfg.HEADINGS_QUERY_SELECTOR);
             } else {
-
+                headerNodes = $window.document.body.querySelectorAll(cfg.HEADINGS_QUERY_SELECTOR);
             }
 
             scope.tree = createHeadingTree(headerNodes, false);
@@ -141,21 +160,8 @@ angular.module('angularHeadingNavigation')
         // *****************
 
         var config = {
-            previewWrapper: '<div class="example-interactive"/>',
-            hljsEl: '<hljs no-escape/>',
-            descriptionTagName: 'description',
-            buttonHtml: '<button class="btn btn-show-code">Show Code</button>',
-            manipulateSourceViewFn: function(contentsHtml) {
-                // remove initial indent
-                contentsHtml = contentsHtml.replace(/(^|\n)    /g, '$1');
-                // trim blank lines
-                contentsHtml = contentsHtml.replace(/^\s*\n/gm, '');
-                return contentsHtml;
-            },
-            headingNav: {
-                HEADINGS_QUERY_SELECTOR: 'h2[data-example-heading],h3[data-example-heading]',
-                START_LEVEL: 2
-            }
+            HEADINGS_QUERY_SELECTOR: 'h2[data-heading-navigation-heading],h3[data-heading-navigation-heading]',
+            START_LEVEL: 2
         };
 
         // *************************
